@@ -1,0 +1,6 @@
+build-essential
+cmake
+pkg-config
+
+libprotobuf-dev
+protobuf-compiler
