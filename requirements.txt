@@ -1,5 +1,5 @@
 streamlit>=1.38.0
-tensorflow==2.20.0
+tensorflow==2.16.1
 pandas==2.1.4
 numpy==1.26.4
 scikit-learn==1.2.2
@@ -17,5 +17,6 @@ tokenizers>=0.12.0  # Or >=0.10.0; check your needs
 sentencepiece>=0.1.99
 transformers[sentencepiece]  # If applicable
 # Your other deps, e.g., streamlit, torch, etc.
+
 
 
