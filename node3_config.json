@@ -1,0 +1,99 @@
+{
+    "node": "node3_wearable_signals",
+    "description": "Wearable sensor based stress vs non-stress detection",
+    "task": "binary_stress_vs_nonstress",
+    "tabular": {
+        "feature_cols": [
+            "acc_mag_mean",
+            "acc_mag_std",
+            "acc_mag_min",
+            "acc_mag_max",
+            "acc_jerk_mean",
+            "acc_jerk_std",
+            "EDA_mean",
+            "EDA_std",
+            "EDA_min",
+            "EDA_max",
+            "EDA_diff_mean",
+            "EDA_diff_std",
+            "EDA_diff_max",
+            "HR_mean",
+            "HR_std",
+            "HR_min",
+            "HR_max",
+            "HR_diff_mean",
+            "HR_diff_std",
+            "HR_diff_max",
+            "X_mean",
+            "Y_mean",
+            "Z_mean",
+            "TEMP_mean",
+            "TEMP_std",
+            "HR_RMSSD",
+            "EDA_range",
+            "EDA_slope",
+            "EDA_num_spikes"
+        ],
+        "scaler_path": "node3_tab_scaler.pkl",
+        "xgb_model_path": "node3_xgb.pkl"
+    },
+    "sequence": {
+        "channels": [
+            "X",
+            "Y",
+            "Z",
+            "EDA",
+            "HR",
+            "TEMP"
+        ],
+        "norm_means": [
+            -32.543785095214844,
+            -2.879901647567749,
+            24.866701126098633,
+            3.755213975906372,
+            81.90032196044922,
+            31.517620086669922
+        ],
+        "norm_stds": [
+            26.777774810791016,
+            32.58062744140625,
+            30.082847595214844,
+            6.125183582305908,
+            14.018393516540527,
+            2.4642364978790283
+        ],
+        "input_shape": [
+            320,
+            6
+        ],
+        "rnn_model_path": "node3_rnn_v2.h5",
+        "architecture": "CNN+BiLSTM+Attention_v2"
+    },
+    "class_weights": {
+        "0": 2.5337686887781405,
+        "1": 0.6229245004013689
+    },
+    "ensemble": {
+        "type": "weighted_average",
+        "alpha_rnn": 0.15000000000000002,
+        "alpha_xgb": 0.85,
+        "threshold": 0.55
+    },
+    "meta": {
+        "window_length_sec": 10,
+        "sample_rate_hz": 32,
+        "samples_per_window": 320,
+        "label_definition": {
+            "0": "non-stress",
+            "1": "stress"
+        },
+        "metrics_test": {
+            "accuracy": 0.59,
+            "macro_f1": 0.52,
+            "precision_0": 0.3,
+            "recall_0": 0.38,
+            "precision_1": 0.74,
+            "recall_1": 0.67
+        }
+    }
+}
