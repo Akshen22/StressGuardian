@@ -1,5 +1,5 @@
 joblib==1.5.2
 numpy==2.4.0
-streamlit==1.44.1
 streamlit==1.51.0
 tensorflow==2.20.0
+
